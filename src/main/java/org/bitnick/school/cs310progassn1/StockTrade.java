@@ -5,6 +5,8 @@
  */
 package org.bitnick.school.cs310progassn1;
 
+import java.util.Objects;
+
 /**
  *
  * @author Nicholas B. Strydom
@@ -87,5 +89,45 @@ public class StockTrade {
     public void setIsTaxable(boolean isTaxable) {
         this.isTaxable = isTaxable;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final StockTrade other = (StockTrade) obj;
+        if (Double.doubleToLongBits(this.pricePerShare) != Double.doubleToLongBits(other.pricePerShare)) {
+            return false;
+        }
+        if (this.numOfShares != other.numOfShares) {
+            return false;
+        }
+        if (this.isTaxable != other.isTaxable) {
+            return false;
+        }
+        if (!Objects.equals(this.stockSymbol, other.stockSymbol)) {
+            return false;
+        }
+        if (!Objects.equals(this.brokersLicenseNum, other.brokersLicenseNum)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "StockTrade{" + "stockSymbol=" + stockSymbol + ", pricePerShare=" + pricePerShare + ", numOfShares=" + numOfShares + ", brokersLicenseNum=" + brokersLicenseNum + ", isTaxable=" + isTaxable + '}';
+    }
 }
