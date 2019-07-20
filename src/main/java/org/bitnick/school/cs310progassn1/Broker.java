@@ -16,9 +16,18 @@ public class Broker {
     private String firstName;
     private String lastName;
     private String deptNum;
-    private double commisionRate;
+    private double commissionRate;
     
     public Broker() {}
+    
+    public Broker(String licenseNum, String firstName, String lastName, 
+            String deptNum, double commissionRate) {
+        this.licenseNum = licenseNum;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.deptNum = deptNum;
+        this.commissionRate = commissionRate;
+    }
 
     /**
      * @return the licenseNum
@@ -77,17 +86,17 @@ public class Broker {
     }
 
     /**
-     * @return the commisionRate
+     * @return the commissionRate
      */
-    public double getCommisionRate() {
-        return commisionRate;
+    public double getCommissionRate() {
+        return commissionRate;
     }
 
     /**
-     * @param commisionRate the commisionRate to set
+     * @param commissionRate the commisionRate to set
      */
-    public void setCommisionRate(double commisionRate) {
-        this.commisionRate = commisionRate;
+    public void setCommissionRate(double commissionRate) {
+        this.commissionRate = commissionRate;
     }
 
     @Override

@@ -19,6 +19,15 @@ public class StockTrade {
     private boolean isTaxable;
     
     public StockTrade() {}
+    
+    public StockTrade(String stockSymbol, double pricePerShare, int numOfShares,
+            String brokersLicenseNum, boolean isTaxable) {
+        this.stockSymbol = stockSymbol;
+        this.pricePerShare = pricePerShare;
+        this.numOfShares = numOfShares;
+        this.brokersLicenseNum = brokersLicenseNum;
+        this.isTaxable = isTaxable;
+    }
 
     /**
      * @return the stockSymbol
