@@ -117,7 +117,7 @@ public class Broker {
             return false;
         }
         final Broker other = (Broker) obj;
-        if (Double.doubleToLongBits(this.commisionRate) != Double.doubleToLongBits(other.commisionRate)) {
+        if (Double.doubleToLongBits(this.commissionRate) != Double.doubleToLongBits(other.commissionRate)) {
             return false;
         }
         if (!Objects.equals(this.licenseNum, other.licenseNum)) {
@@ -137,6 +137,6 @@ public class Broker {
 
     @Override
     public String toString() {
-        return "Broker{" + "licenseNum=" + licenseNum + ", firstName=" + firstName + ", lastName=" + lastName + ", deptNum=" + deptNum + ", commisionRate=" + commisionRate + '}';
+        return "Broker{" + "licenseNum=" + licenseNum + ", firstName=" + firstName + ", lastName=" + lastName + ", deptNum=" + deptNum + ", commissionRate=" + commissionRate + '}';
     }
 }
