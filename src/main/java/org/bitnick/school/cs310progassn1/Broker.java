@@ -5,6 +5,8 @@
  */
 package org.bitnick.school.cs310progassn1;
 
+import java.util.Objects;
+
 /**
  *
  * @author Nicholas B. Strydom
@@ -87,6 +89,45 @@ public class Broker {
     public void setCommisionRate(double commisionRate) {
         this.commisionRate = commisionRate;
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Broker other = (Broker) obj;
+        if (Double.doubleToLongBits(this.commisionRate) != Double.doubleToLongBits(other.commisionRate)) {
+            return false;
+        }
+        if (!Objects.equals(this.licenseNum, other.licenseNum)) {
+            return false;
+        }
+        if (!Objects.equals(this.firstName, other.firstName)) {
+            return false;
+        }
+        if (!Objects.equals(this.lastName, other.lastName)) {
+            return false;
+        }
+        if (!Objects.equals(this.deptNum, other.deptNum)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Broker{" + "licenseNum=" + licenseNum + ", firstName=" + firstName + ", lastName=" + lastName + ", deptNum=" + deptNum + ", commisionRate=" + commisionRate + '}';
+    }
 }
