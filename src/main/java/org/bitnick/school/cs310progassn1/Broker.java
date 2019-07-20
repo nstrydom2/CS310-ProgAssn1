@@ -28,6 +28,20 @@ public class Broker {
         this.deptNum = deptNum;
         this.commissionRate = commissionRate;
     }
+    
+    public boolean isLicenseNumValid(String licenseNum) {
+        for (Character character : licenseNum.toCharArray()) {
+            if (licenseNum.indexOf(character) < 3 &&
+                    !Character.isLetter(character)) {
+                return false;
+            } else if (licenseNum.indexOf(character) >= 3 &&
+                    !Character.isDigit(character)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
 
     /**
      * @return the licenseNum
