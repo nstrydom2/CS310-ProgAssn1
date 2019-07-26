@@ -31,7 +31,7 @@ public class Broker {
     
     public boolean isLicenseNumValid(String licenseNum) {            
         if (licenseNum.length() != 8) {
-                return false;
+            return false;
         } else {
             for (Character character : licenseNum.toCharArray()) {
                 if (licenseNum.indexOf(character) < 3 &&
