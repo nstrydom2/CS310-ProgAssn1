@@ -29,14 +29,18 @@ public class Broker {
         this.commissionRate = commissionRate;
     }
     
-    public boolean isLicenseNumValid(String licenseNum) {
-        for (Character character : licenseNum.toCharArray()) {
-            if (licenseNum.indexOf(character) < 3 &&
-                    !Character.isLetter(character)) {
+    public boolean isLicenseNumValid(String licenseNum) {            
+        if (licenseNum.length() != 8) {
                 return false;
-            } else if (licenseNum.indexOf(character) >= 3 &&
-                    !Character.isDigit(character)) {
-                return false;
+        } else {
+            for (Character character : licenseNum.toCharArray()) {
+                if (licenseNum.indexOf(character) < 3 &&
+                        !Character.isLetter(character)) {
+                    return false;
+                } else if (licenseNum.indexOf(character) >= 3 &&
+                        !Character.isDigit(character)) {
+                    return false;
+                }
             }
         }
         
