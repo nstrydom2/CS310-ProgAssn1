@@ -6,6 +6,7 @@
 package org.bitnick.school.cs310progassn1;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -29,7 +30,8 @@ public class Broker {
         this.commissionRate = commissionRate;
     }
     
-    public boolean isLicenseNumValid(String licenseNum) {            
+    @Deprecated
+    public boolean isValidLicense(boolean deprecated) {            
         if (licenseNum.length() != 8) {
             return false;
         } else {
@@ -44,6 +46,30 @@ public class Broker {
             }
         }
         
+        return true;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public boolean isValidLicense() {     
+        if (!Pattern.matches("^[A-z]{3}[0-9]{5}$", licenseNum)) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public boolean isValidDept() {
+        if (!Pattern.matches("^[1-3]{3}-[1-3]{3}$", lastName)) {
+            return false;
+        }
+       
         return true;
     }
 

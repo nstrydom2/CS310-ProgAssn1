@@ -88,7 +88,7 @@ public class StockTrade {
     /**
      * @return the isTaxable
      */
-    public boolean isIsTaxable() {
+    public boolean isTaxable() {
         return isTaxable;
     }
 
