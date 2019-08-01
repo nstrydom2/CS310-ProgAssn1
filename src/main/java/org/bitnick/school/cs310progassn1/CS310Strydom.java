@@ -148,7 +148,7 @@ public class CS310Strydom {
         System.out.println();
         System.out.println("Running Test 3:");
         
-        final String INPUT_FILE_PATH = "/home/ghost/NetBeansProjects/CS310ProgAssn1/input/assn1input1.txt";
+        final String INPUT_FILE_PATH = "/home/ghost/NetBeansProjects/CS310ProgAssn1/input/assn1input2.txt";
         
         try (Scanner fileScanner = new Scanner(new File(INPUT_FILE_PATH))) {
             while (fileScanner.hasNextLine()) {
