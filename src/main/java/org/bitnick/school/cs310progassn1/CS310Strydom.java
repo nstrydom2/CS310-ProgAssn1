@@ -89,7 +89,7 @@ public class CS310Strydom {
         System.out.println();
         System.out.println("Running Test 1b:");
         
-        StockTrade test1StockTrade = new StockTrade("BTCUSD", 7344.00, 82, "BTC81234", true);
+        StockTrade test1StockTrade = new StockTrade("SBTC", 7344.00, 82, "BTC81234", true);
         System.out.println(test1StockTrade.toString());
         
         // Test 2a
@@ -122,7 +122,7 @@ public class CS310Strydom {
         System.out.println();
         System.out.println("Running Test 2c:");
         
-        StockTrade test2StockTrade = new StockTrade("BTCUSD", 7344.00, 82, "BTC81234", true);
+        StockTrade test2StockTrade = new StockTrade("SBTC", 7344.00, 82, "BTC81234", true);
         System.out.println(test2StockTrade.toString());
         
         if (test2StockTrade.equals(test1StockTrade)) {
@@ -135,7 +135,7 @@ public class CS310Strydom {
         System.out.println();
         System.out.println("Running Test 2d:");
         
-        StockTrade test2dStockTrade = new StockTrade("ETHUSD", 800.00, 82, "BTC81234", true);
+        StockTrade test2dStockTrade = new StockTrade("ETH", 800.00, 82, "BTC81234", true);
         System.out.println(test2StockTrade.toString());
         
         if (test2dStockTrade.equals(test1StockTrade)) {
@@ -148,9 +148,7 @@ public class CS310Strydom {
         System.out.println();
         System.out.println("Running Test 3:");
         
-        final String INPUT_FILE_PATH = "/home/ghost/NetBeansProjects/CS310ProgAssn1/testData.csv";
-        
-        List<Broker> brokers = new ArrayList<Broker>();
+        final String INPUT_FILE_PATH = "/home/ghost/NetBeansProjects/CS310ProgAssn1/input/assn1input1.txt";
         
         try (Scanner fileScanner = new Scanner(new File(INPUT_FILE_PATH))) {
             while (fileScanner.hasNextLine()) {
@@ -158,11 +156,10 @@ public class CS310Strydom {
                     String[] line = fileScanner.nextLine().split(",");
 
                     if (line[0].equals("BROKER")) {
+                        Broker broker = setBrokerAttributes(new Broker(), Arrays.copyOfRange(line, 2, line.length));
+
                         if (line[1].equals("ADD")) {
                             System.out.println("ADDING BROKER");
-
-                            Broker broker = setBrokerAttributes(new Broker(), Arrays.copyOfRange(line, 2, line.length));
-
                             System.out.println(broker.toString());
                             
                             if (!broker.isValidLicense())
@@ -175,23 +172,58 @@ public class CS310Strydom {
                             
                         } else if (line[1].equals("DEL")) {
                             System.out.println("DELETING BROKER");
+                            System.out.println(broker.toString());
+
+                            if (!broker.isValidLicense())
+                                throw new Exception("Invalid broker license number format: " + broker.getLicenseNum());
+
+                            if (!broker.isValidDept())
+                                throw new Exception("Invalid department number format: " + broker.getDeptNum());
+
                         }
                     } else if (line[0].equals("TRADE")) {
+                        StockTrade stockTrade =
+                                setStockTradeAttributes(new StockTrade(), Arrays.copyOfRange(line, 2, line.length));
+
                         if (line[1].equals("ADD")) {
                             System.out.println("BUYING STOCK");
+                            System.out.println(stockTrade.toString());
 
-                            StockTrade stockTrade = setStockTradeAttributes(new StockTrade(), Arrays.copyOfRange(line, 2, line.length));
-                            
-                            if (!true)
-                                throw new Exception();
+                            // Weird hacky validation because off time crunch, sorry
+                            if (!new Broker(stockTrade.getBrokersLicenseNum(), "", "", "", 0.0).isValidLicense())
+                                throw new Exception("Invalid broker licence number format: " + stockTrade.getBrokersLicenseNum());
+
+                            if (!stockTrade.isValidSymbol())
+                                throw new Exception("Invalid broker licence number format: " + stockTrade.getStockSymbol());
+
+                            if (!stockTrade.isValidPrice())
+                                throw new Exception("Invalid share price: " + stockTrade.getPricePerShare());
+
+                            if (!stockTrade.isValidNumOfShares())
+                                throw new Exception("Invalid number of shares: " + stockTrade.getNumOfShares());
 
                         } else if (line[1].equals("DEL")) {
                             System.out.println("SELLING STOCK");
-                            // Del element
+                            System.out.println(stockTrade.toString());
+
+                            // Weird hacky validation because off time crunch, sorry
+                            if (!new Broker(stockTrade.getBrokersLicenseNum(), "", "", "", 0.0).isValidLicense())
+                                throw new Exception("Invalid broker licence number format: " + stockTrade.getBrokersLicenseNum());
+
+                            if (!stockTrade.isValidSymbol())
+                                throw new Exception("Invalid broker licence number format: " + stockTrade.getStockSymbol());
+
+                            if (!stockTrade.isValidPrice())
+                                throw new Exception("Invalid share price: " + stockTrade.getPricePerShare());
+
+                            if (!stockTrade.isValidNumOfShares())
+                                throw new Exception("Invalid number of shares: " + stockTrade.getNumOfShares());
+
                         }
+                        //System.out.println();
                     }
                 } catch (Exception ex) {
-                    System.out.println("ERROR: " + ex.getMessage());
+                    System.out.println(String.format("ERROR: %s\n", ex.getMessage()));
                 }
             }
         } catch (FileNotFoundException ex) {
