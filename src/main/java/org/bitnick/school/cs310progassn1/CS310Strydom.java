@@ -13,10 +13,17 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
+ * CS310Strydom - This class is designed to test the Broker
+ *  and StockTrade classes.
  * @author Nicholas B. Strydom
  */
-public class CS310Lastname {
+public class CS310Strydom {
+    /**
+     * Set's the variables for a Broker object
+     * @param broker Broker object to set variables
+     * @param brokerArray Array of values for the Broker object
+     * @return The Broker object we have edited
+     */
     public static Broker setBrokerAttributes(Broker broker, String[] brokerArray) {
         broker.setLicenseNum(brokerArray[0]);
         broker.setFirstName(brokerArray[1]);
@@ -26,7 +33,11 @@ public class CS310Lastname {
         
         return broker;
     }
-    
+
+    /**
+     * Displays all values as defined in the toString() method
+     * @param broker Broker object in which to display variables and values
+     */
     public static void displayBrokerAttributes(Broker broker) {
         System.out.println(broker.getLicenseNum());
         System.out.println(broker.getFirstName());
@@ -34,7 +45,13 @@ public class CS310Lastname {
         System.out.println(broker.getDeptNum());
         System.out.println(broker.getCommissionRate());
     }
-    
+
+    /**
+     * Set't the variables for a StockTrade object
+     * @param stockTrade StockTrade object on which to set variables
+     * @param tradeArray Array of values for the StockTrade object
+     * @return StockTrade object
+     */
     public static StockTrade setStockTradeAttributes(StockTrade stockTrade, String[] tradeArray) {
         stockTrade.setStockSymbol(tradeArray[0]);
         stockTrade.setPricePerShare(Double.valueOf(tradeArray[1]));
@@ -44,7 +61,11 @@ public class CS310Lastname {
         
         return stockTrade;
     }
-    
+
+    /**
+     * Displays all values as defined in the toString() method
+     * @param stockTrade StockTrade object in which to display variables and values
+     */
     public static void displayStockTradeAttributes(StockTrade stockTrade) {
         System.out.println(stockTrade.getStockSymbol());
         System.out.println(stockTrade.getPricePerShare());
@@ -52,7 +73,11 @@ public class CS310Lastname {
         System.out.println(stockTrade.getBrokersLicenseNum());
         System.out.println(stockTrade.isTaxable());
     }
-    
+
+    /**
+     * Point of execution
+     * @param args Command line args
+     */
     public static void main(String[] args) {
         // Test 1a
         System.out.println("Running Test 1a:");

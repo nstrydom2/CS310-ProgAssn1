@@ -30,6 +30,47 @@ public class StockTrade {
     }
 
     /**
+     * Validator for checking stock symbol is uppercase, and that the length
+     * is either 3 or 4
+     * @return boolean value of if valid or not
+     */
+    public boolean isValidSymbol() {
+        if (this.stockSymbol.length() < 3 || this.stockSymbol.length() > 4) {
+            return false;
+        } else {
+            for (Character character : stockSymbol.toCharArray()) {
+                if (!Character.isUpperCase(character))
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Validator for checking if price is below 1,000.00 a share
+     * @return boolean value of if valid or not
+     */
+    public boolean isValidPrice() {
+        if (this.pricePerShare > 1000.00)
+            return false;
+
+        return true;
+    }
+
+    /**
+     * Validator for checking if the number of shares does not
+     * exceed 100,000
+     * @return boolean value of if valid or not
+     */
+    public boolean isValidNumOfShares() {
+        if (this.numOfShares > 100000)
+            return false;
+
+        return true;
+    }
+
+    /**
      * @return the stockSymbol
      */
     public String getStockSymbol() {
